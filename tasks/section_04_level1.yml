@@ -1,0 +1,25 @@
+---
+- name: 4.1 Create a user for the container (Scored)
+  command: "Manual action"
+  tags:
+    - scored
+    - section4.1
+
+- name: 4.2 Use trusted base images for containers (Not Scored)
+  command: "Manual action"
+  tags:
+    - notscored
+    - section4.2
+
+- name: 4.3 Do not install unnecessary packages in the container (Not Scored)
+  command: "Manual action"
+  tags:
+    - notscored
+    - section4.3
+
+- name: 4.4 Rebuild the images to include security patches (Not Scored)
+  command: "mManual action"
+  tags:
+    - notscored
+    - section4.4
+

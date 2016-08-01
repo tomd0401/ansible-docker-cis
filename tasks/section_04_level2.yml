@@ -1,0 +1,7 @@
+---
+- name: 4.5 Enable Content trust for Docker (Scored)
+  debug: msg="export DOCKER_CONTENT_TRUST=1 ???"
+  tags:
+    - scored
+    - section4.5
+

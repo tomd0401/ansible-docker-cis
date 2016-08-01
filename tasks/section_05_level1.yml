@@ -1,0 +1,127 @@
+---
+- name: 5.3 Restrict Linux Kernel Capabilities within containers (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: CapAdd={{.HostConfig.CapAdd }} CapDrop={{ .HostConfig.CapDrop }}'"
+  tags:
+    - scored
+    - section5.3
+
+- name: 5.4 Do not use privileged containers (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: Privileged={{.HostConfig.Privileged }}' | grep -q -v Privileged=false"
+  tags:
+    - scored
+    - section5.4
+
+- name: 5.5 Do not mount sensitive host system directories on containers (Scored)
+  debug: msg="docker ps  --quiet | xargs docker inspect --format '{{ .Id }}: Volumes={{ .Mounts }}"
+  tags:
+    - scored
+    - section5.5
+
+- name: 5.6 Do not run ssh within containers (Scored)
+  debug: msg="docker ps --quiet | xargs -I{} docker exec {} ps -el | grep ssh"
+  tags:
+    - scored
+    - section5.6
+
+- name: 5.7 Do not map privileged ports within containers (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: Ports={{ .NetworkSettings.Ports }}'"
+  tags:
+    - scored
+    - section5.7
+
+- name: 5.8 Open only needed ports on container (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: Ports={{ .NetworkSettings.Ports }}'"
+  tags:
+    - scored
+    - section5.8
+
+- name: 5.9 Do not share the hosts network namespace (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: NetworkMode={{.HostConfig.NetworkMode }}' | grep -q host"
+  tags:
+    - scored
+    - section5.9
+
+- name: 5.10 Limit memory usage for container (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: Memory={{.HostConfig.Memory }}' | grep Memory=0"
+  tags:
+    - scored
+    - section5.10
+
+- name: 5.11 Set container CPU priority appropriately (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: CpuShares={{.HostConfig.CpuShares }}' | grep 'CpuShares=0\|1024'"
+  tags:
+    - scored
+    - section5.11
+
+- name: 5.12 Mount containers root filesystem as read only (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: ReadonlyRootfs={{.HostConfig.ReadonlyRootfs }}' | grep -q ReadonlyRootfs=false"
+  tags:
+    - scored
+    - section5.12
+
+- name: 5.13 Bind incoming container traffic to a specific host interface (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: Ports={{ .NetworkSettings.Ports }}' | grep -q 0.0.0.0"
+  tags:
+    - scored
+    - section5.13
+
+- name: 5.14 Set the on-failure container restart policy to 5 (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: RestartPolicyName={{.HostConfig.RestartPolicy.Name }} MaximumRetryCount={{.HostConfig.RestartPolicy.MaximumRetryCount }}'"
+  tags:
+    - scored
+    - section5.14
+
+- name: 5.15 Do not share the hosts process namespace (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: PidMode={{.HostConfig.PidMode }}' | grep -q 'PidMode=host'"
+  tags:
+    - scored
+    - section5.15
+
+- name: 5.16 Do not share the hosts IPC namespace (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: IpcMode={{.HostConfig.IpcMode }}' | grep -q 'IpcMode=host'"
+  tags:
+    - scored
+    - section5.16
+
+- name: 5.17 Do not directly expose host devices to containers (Not Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: Devices={{.HostConfig.Devices }}'"
+  tags:
+    - notscored
+    - section5.17
+
+- name: 5.18 Override default ulimit at runtime only if needed (Not Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: Ulimits={{.HostConfig.Ulimits }}' | grep -qv 'Ulimits=<no value>'"
+  tags:
+    - notscored
+    - section5.18
+
+- name: 5.19 Do not set mount propagation mode to shared (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: Propagation={{range $mnt:= .Mounts}} {{json $mnt.Propagation}} {{end}}' | grep -q 'shared'"
+  tags:
+    - scored
+    - section5.19
+
+- name: 5.20 Do not share the hosts UTS namespace (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: UTSMode={{.HostConfig.UTSMode }}' | grep -q 'UTSMode=host'"
+  tags:
+    - scored
+    - section5.20
+
+- name: 5.21 Do not disable default seccomp profile (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: SecurityOpt={{.HostConfig.SecurityOpt }}' | grep -q 'seccomp:unconfined'"
+  tags:
+    - scored
+    - section5.21
+
+- name: 5.24 Confirm cgroup usage (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: CgroupParent={{.HostConfig.CgroupParent }}' | grep -qv 'CgroupParent=$'"
+  tags:
+    - scored
+    - section5.24
+
+- name: 5.25 Restrict container from acquiring additional privileges (Scored)
+  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: SecurityOpt={{.HostConfig.SecurityOpt }}'"
+  tags:
+    - scored
+    - section5.25
+

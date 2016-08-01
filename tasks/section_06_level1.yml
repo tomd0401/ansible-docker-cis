@@ -1,0 +1,31 @@
+---
+- name: 6.1 Perform regular security audits of your host system and containers (Not Scored)
+  debug: msg="*** Follow your organization's security audit policies and requirements."
+  tags:
+    - notscored
+    - section6.1
+
+- name: 6.2 Monitor Docker containers usage, performance and metering (Not Scored)
+  debug: msg="*** Use a software or a container for tracking container usage, reporting performance and metering."
+  tags:
+    - notscored
+    - section6.2
+
+- name: 6.3 Backup container data (Not Scored)
+  debug: msg="*** You should follow your organization's policy for data backup."
+  tags:
+    - notscored
+    - section6.3
+
+- name: 6.4 Avoid image sprawl (Not Scored)
+  debug: msg="*** Keep the set of the images that you actually need and establish a workflow to remove old or stale images from the host."
+  tags:
+    - notscored
+    - section6.4
+
+- name: 6.5 Avoid container sprawl (Not Scored)
+  debug: msg="*** Periodically check your container inventory per host and clean up the containers that are not needed"
+  tags:
+    - notscored
+    - section6.5
+
