@@ -1,0 +1,32 @@
+---
+- name: 2.1 - 2.4 Configure docker deamon according to best practices (Scored)
+  command: "cat /etc/sysconfig/docker | grep '--selinux-enabled --disable-legacy-registry --icc=false --log-driver=journald --group=docker --log-level=info --iptables=true'"
+  register: res
+  failed_when: res.rc == 1
+  changed_when: res.rc == 1
+  always_run: yes
+  tags:
+    - scored
+    - section2.1
+    - section2.2
+    - section2.3
+    - section2.4
+
+- name: 2.5 Do not use the aufs storage driver (Scored)
+  debug: msg=" docker info | grep -e '^Storage Driver:\s*aufs\s*$' shold return nothing"
+  tags:
+    - scored
+    - section2.5
+
+- name: 2.6 Configure TLS authentication for Docker daemon (Scored)
+  debug: msg="Manual action needed"
+  tags:
+    - scored
+    - section2.6
+
+- name: 2.7 Set default ulimit as appropriate (Not Scored)
+  command: "ulimit -n 90000"
+  tags:
+    - notscored
+    - section2.7
+

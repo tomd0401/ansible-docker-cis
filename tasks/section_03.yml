@@ -17,8 +17,3 @@
       - section3
       - level1
 
-  - include: section_03_level2.yml
-    tags:
-      - section3
-      - level2
-

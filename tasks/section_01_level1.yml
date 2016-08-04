@@ -17,8 +17,11 @@
     - section1.1
 
 - name: 1.2 Use the updated Linux Kernel (Scored)
-  shell: "uname -r | grep ^3\.10"
-  changed_when: false
+  command: "uname -r | grep ^3\.10"
+  register: res
+  failed_when: res.rc == 1
+  changed_when: res.rc == 1
+  always_run: yes
   tags:
     - scored
     - section1.2
