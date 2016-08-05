@@ -1,16 +1,10 @@
 CIS
 =========
 
-This role can be used to audit or remediate a host against the Center for Internet Security (CIS) security benchmarks.
+This role can be used to audit or remediate a host against the Center for Internet Security (CIS) security benchmarks for docker 1.11.
 
 *Disclaimer: This project has no affiliation with CIS.  The role and its contents have not been reviewed or endorsed by CIS.*
 
-*this project is forked from https://github.com/major/cis-rhel-ansible*
-*reason it was split is because this role keeps everything under roles so it
-breaks with ansible-galaxy and makes it more difficult to keep separate repo's
-per role*
-*Roles have been fixed to work for centos & rhel 6/7*
-*Tests have been added with kitchen*
 
 Requirements
 ------------
@@ -26,14 +20,9 @@ A description of the settable variables for this role should go here, including 
 Dependencies
 ------------
 
-Some sensible defaults are configured and documented within defaults/main.yml.  These defaults are set so they would cause minimal disruption to a production system.  However, it's *your* responsibility to verify that the default configuration will not harm your production server.  *Always* run the role in check mode if you're unsure of its effects.
+*Always* run the role in check mode if you're unsure of its effects.
 
 Be aware that some of the default variables are set against CIS recommendations in the hopes that they will cause minimal disruption to a system.
-
-Kitchen Testing
----------------
-Installing kitchen : gem install kitchen
-Run Tests: kitchen setup all
 
 Example Playbook
 ----------------
@@ -47,7 +36,7 @@ Playbooks can utilize the CIS role without much effort:
 The role is thoroughly tagged so that you can run certain sections or certain levels of checks:
 
     # Test only items from section 4
-    ansible-playbook -i hosts -C playbook.yml -t section4
+    ansible-playbook -i hosts -C playbook.yml -t section1
 
     # Apply changes only from items in section 4, 5, and 6
     ansible-playbook -i hosts playbook.yml -t section4,section5,section6
@@ -60,6 +49,5 @@ Apache License, Version 2.0
 Author Information
 ------------------
 
-Patrik Uytterhoeven <patrik at open-future.be>
-based on the work of <https://github.com/major/cis-rhel-ansible>
+Tomasz Daszkiewicz 
 
