@@ -2,26 +2,26 @@
 - name: 2.8 Enable user namespace support (Scored)
   debug: msg="*** not covered by this playbook"
   tags:
-    - scored
-    - section2.8
+   - scored
+   - section2.8
 
 - name: 2.9 Confirm default cgroup usage (Scored)
   debug: msg="*** not covered by this playbook"
   tags:
-    - scored
-    - section2.9
+   - scored
+   - section2.9
 
 - name: 2.10 Do not change base device size until needed (Scored)
   command: "ps -ef | grep docker | grep dm.basesize"
   tags:
-    - scored
-    - section2.10
+   - scored
+   - section2.10
 
 - name: 2.11 Use authorization plugin (Scored)
   debug: msg= "*** not covered by this playbook"
   tags:
-    - scored
-    - section2.11
+   - scored
+   - section2.11
 
 - name: 2.12 Configure centralized and remote logging (Scored)
   command: "ps -ef | grep docker | grep log-driver"
@@ -30,12 +30,12 @@
   changed_when: res.rc == 1
   always_run: yes
   tags:
-    - scored
-    - section2.12
+   - scored
+   - section2.12
 
 - name: 2.13 Disable operations on legacy registry (v1) (Scored)
   debug: msg="ps -ef | grep docker | grep -q disable-legacy-registry"
   tags:
-    - scored
-    - section2.13
+   - scored
+   - section2.13
 

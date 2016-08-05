@@ -2,120 +2,120 @@
 - name: 3.1 Verify that docker.service file ownership is set to root:root (Scored)
   command: "chown root:root /usr/lib/systemd/system/docker.service"
   tags:
-    - scored
-    - section3.1
+   - scored
+   - section3.1
 
 - name: 3.2 Verify that docker.service file permissions are set to 644 or more restrictive (Scored)
   command: "chmod 644 /usr/lib/systemd/system/docker.service"
   tags:
-    - scored
-    - section3.2
+   - scored
+   - section3.2
 
 - name: 3.3 Verify that docker.socket file ownership is set to root:root (Scored)
   command: "chown root:root /usr/lib/systemd/system/docker.socket"
   tags:
-    - scored
-    - section3.3
+   - scored
+   - section3.3
 
 - name: 3.4 Verify that docker.socket file permissions are set to 644 or more restrictive (Scored)
   command: "chmod 644 /usr/lib/systemd/system/docker.socket"
   tags:
-    - scored
-    - section3.4
+   - scored
+   - section3.4
 
 - name: 3.5 Verify that /etc/docker directory ownership is set to root:root (Scored)
   command: "chown root:root /etc/docker"
   tags:
-    - scored
-    - section3.5
+   - scored
+   - section3.5
 
 - name: 3.6 Verify that /etc/docker directory permissions are set to 755 or more restrictive (Scored)
   command: "chmod 755 /etc/docker"
   tags:
-    - scored
-    - section3.6
+   - scored
+   - section3.6
 
 - name: 3.7 Verify that registry certificate file ownership is set to root:root (Scored)
   command: "*** not covered by this playbook"
   tags:
-    - scored
-    - section3.7
+   - scored
+   - section3.7
 
 - name: 3.8 Verify that registry certificate file permissions are set to 444 or more restrictive (Scored)
   command: "*** not covered by this playbook"
   tags:
-    - scored
-    - section3.8
+   - scored
+   - section3.8
 
 - name: 3.9 Verify that TLS CA certificate file ownership is set to root:root (Scored)
   command: "*** not covered by this playbook"
   tags:
-    - scored
-    - section3.9
+   - scored
+   - section3.9
 
 - name: 3.10 Verify that TLS CA certificate file permissions are set to 444 or more restrictive (Scored)
   command: "*** not covered by this playbook"
   tags:
-    - scored
-    - section3.10
+   - scored
+   - section3.10
 
 - name: 3.11 Verify that Docker server certificate file ownership is set to root:root (Scored)
   command: "*** not covered by this playbook"
   tags:
-    - scored
-    - section3.11
+   - scored
+   - section3.11
 
 - name: 3.12 Verify that Docker server certificate file permissions are set to 444 or more restrictive (Scored)
   command: "*** not covered by this playbook"
   tags:
-    - scored
-    - section3.12
+   - scored
+   - section3.12
 
 - name: 3.13 Verify that Docker server certificate key file ownership is set to root:root (Scored)
   command: "*** not covered by this playbook"
   tags:
-    - scored
-    - section3.13
+   - scored
+   - section3.13
 
 - name: 3.14 Verify that Docker server certificate key file permissions are set to 400 (Scored)
   command: "*** not covered by this playbook"
   tags:
-    - scored
-    - section3.14
+   - scored
+   - section3.14
 
 - name: 3.15 Verify that Docker socket file ownership is set to root:docker (Scored)
   command: "chown root:docker /var/run/docker.sock"
   tags:
-    - scored
-    - section3.15
+   - scored
+   - section3.15
 
 - name: 3.16 Verify that Docker socket file permissions are set to 660 or more restrictive (Scored)
   command: "chmod 660 /var/run/docker.sock"
   tags:
-    - scored
-    - section3.16
+   - scored
+   - section3.16
 
 - name: 3.17 Verify that daemon.json file ownership is set to root:root (Scored)
   debug: msg="chown root:root /etc/docker/daemon.json"
   tags:
-    - scored
-    - section3.17
+   - scored
+   - section3.17
 
 - name: 3.18 Verify that daemon.json file permissions are set to 644 or more restrictive (Scored)
   debug: msg="chmod 644 /etc/docker/daemon.json"
   tags:
-    - scored
-    - section3.18
+   - scored
+   - section3.18
 
 - name: 3.19 Verify that /etc/default/docker file ownership is set to root:root (Scored)
   command: "chown root:root /etc/default/docker"
   tags:
-    - scored
-    - section3.19
+   - scored
+   - section3.19
 
 - name: 3.20 Verify that /etc/default/docker file permissions are set to 644 or more restrictive (Scored)
   command: "chmod 644 /etc/default/docker"
   tags:
-    - scored
-    - section3.20
+   - scored
+   - section3.20
 

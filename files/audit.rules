@@ -1,0 +1,41 @@
+# This file contains the auditctl rules that are loaded
+# whenever the audit daemon is started via the initscripts.
+# The rules are simply the parameters that would be passed
+# to auditctl.
+
+# First rule - delete all
+-D
+
+# Increase the buffers to survive stress events.
+# Make this bigger for busy systems
+-b 320
+
+# Feel free to add below this line. See auditctl man page
+
+# 1.7 Audit docker daemon (Scored)
+-w /usr/bin/docker -k docker
+
+# 1.8 Audit Docker files and directories - /var/lib/docker (Scored)
+-w /var/lib/docker -k docker
+
+# 1.9 Audit Docker files and directories - /etc/docker (Scored)
+-w /etc/docker -k docker
+
+# 1.10 Audit Docker files and directories - docker.service (Scored)
+-w /usr/lib/systemd/system/docker.service -k docker
+
+# 1.11 Audit Docker files and directories - docker.socket (Scored)
+-w /usr/lib/systemd/system/docker.socket -k docker
+
+# 1.12 Audit Docker files and directories - /etc/default/docker (Scored)
+-w /etc/default/docker -k docker
+
+# 1.13 Audit Docker files and directories - /etc/docker/daemon.json (Scored)
+-w /etc/docker/daemon.json -k docker
+
+# 1.14 Audit Docker files and directories - /usr/bin/docker-containerd (Scored)
+-w /usr/bin/docker-containerd -k docker
+
+# 1.15 Audit Docker files and directories - /usr/bin/docker-runc (Scored)
+-w /usr/bin/docker-runc -k docker
+

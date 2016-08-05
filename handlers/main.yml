@@ -1,0 +1,5 @@
+  - name: Reload auditd Rules
+    service: name=auditd state=restarted
+
+  - name: Reload docker
+    service: name=docker state=restarted
