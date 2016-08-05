@@ -1,6 +1,6 @@
 ---
-- name: 2.1 - 2.4 Configure docker deamon according to best practices (Scored)
-  command: "cat /etc/sysconfig/docker | grep '--selinux-enabled --disable-legacy-registry --icc=false --log-driver=journald --group=docker --log-level=info --iptables=true'"
+- name: 2.1 Restrict network traffic between containers (Scored)
+  shell: ps -ef | grep '[i]cc=false'
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
@@ -8,8 +8,35 @@
   tags:
    - scored
    - section2.1
+
+- name: 2.2 Set the logging level (Scored)
+  shell: ps -ef | grep '[l]og-level="info"'
+  register: res
+  failed_when: res.rc == 1
+  changed_when: res.rc == 1
+  always_run: yes
+  tags:
+   - scored
    - section2.2
+
+- name: 2.3 Allow Docker to make changes to iptables (Scored)
+  shell: ps -ef | grep '[i]ptables=false'
+  register: res
+  failed_when: res.rc == 1
+  changed_when: res.rc == 1
+  always_run: yes
+  tags:
+   - scored
    - section2.3
+
+- name: 2.4 Do not use insecure registries (Scored)
+  shell: ps -ef | grep '[i]nsecure-registry'
+  register: res
+  failed_when: res.rc == 0
+  changed_when: res.rc == 0
+  always_run: yes
+  tags:
+   - scored
    - section2.4
 
 - name: 2.5 Do not use the aufs storage driver (Scored)

@@ -1,6 +1,6 @@
 ---
 - name: 1.1 Create a separate partition for containers (Scored)
-  command: "grep /var/lib/docker fstab"
+  command: "grep /var/lib/docker /etc/fstab"
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
