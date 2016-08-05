@@ -25,7 +25,7 @@
    - section2.6
 
 - name: 2.7 Set default ulimit as appropriate (Not Scored)
-  command: "ulimit -n 90000"
+  shell: ulimit -n 90000
   tags:
    - notscored
    - section2.7

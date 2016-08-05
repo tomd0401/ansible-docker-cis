@@ -36,49 +36,49 @@
    - section3.6
 
 - name: 3.7 Verify that registry certificate file ownership is set to root:root (Scored)
-  command: "*** not covered by this playbook"
+  debug: msg="*** not covered by this playbook"
   tags:
    - scored
    - section3.7
 
 - name: 3.8 Verify that registry certificate file permissions are set to 444 or more restrictive (Scored)
-  command: "*** not covered by this playbook"
+  debug: msg="*** not covered by this playbook"
   tags:
    - scored
    - section3.8
 
 - name: 3.9 Verify that TLS CA certificate file ownership is set to root:root (Scored)
-  command: "*** not covered by this playbook"
+  debug: msg="*** not covered by this playbook"
   tags:
    - scored
    - section3.9
 
 - name: 3.10 Verify that TLS CA certificate file permissions are set to 444 or more restrictive (Scored)
-  command: "*** not covered by this playbook"
+  debug: msg="*** not covered by this playbook"
   tags:
    - scored
    - section3.10
 
 - name: 3.11 Verify that Docker server certificate file ownership is set to root:root (Scored)
-  command: "*** not covered by this playbook"
+  debug: msg="*** not covered by this playbook"
   tags:
    - scored
    - section3.11
 
 - name: 3.12 Verify that Docker server certificate file permissions are set to 444 or more restrictive (Scored)
-  command: "*** not covered by this playbook"
+  debug: msg="*** not covered by this playbook"
   tags:
    - scored
    - section3.12
 
 - name: 3.13 Verify that Docker server certificate key file ownership is set to root:root (Scored)
-  command: "*** not covered by this playbook"
+  debug: msg="*** not covered by this playbook"
   tags:
    - scored
    - section3.13
 
 - name: 3.14 Verify that Docker server certificate key file permissions are set to 400 (Scored)
-  command: "*** not covered by this playbook"
+  debug: msg="*** not covered by this playbook"
   tags:
    - scored
    - section3.14

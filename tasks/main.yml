@@ -35,7 +35,7 @@
 
 - name: Run Section 04
   include: section_04.yml
-  when: (iansible_os_family == "RedHat" or ansible_os_family == "Centos")
+  when: (ansible_os_family == "RedHat" or ansible_os_family == "Centos")
   tags: section4
 
 - name: Run Section 05

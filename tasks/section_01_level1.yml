@@ -17,7 +17,7 @@
    - section1.1
 
 - name: 1.2 Use the updated Linux Kernel (Scored)
-  shell: "uname -r | grep ^3\.10"
+  shell: uname -r | grep ^3\.10
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
@@ -54,7 +54,7 @@
   copy: >
       src=audit.rules
       dest=/etc/audit/audit.rules
-    notify: Reload auditd Rules
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.7

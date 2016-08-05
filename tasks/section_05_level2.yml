@@ -1,24 +1,24 @@
 ---
 - name: 5.1 Verify AppArmor Profile, if applicable (Scored)
-  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: AppArmorProfile={{.AppArmorProfile }}' | grep 'AppArmorProfile=$'"
+  debug: msg="***Needs running set of containers"
   tags:
    - scored
    - section5.1
 
 - name: 5.2 Verify SELinux security options, if applicable (Scored)
-  debug: msg="docker ps --quiet | xargs docker inspect --format '{{ .Id }}: SecurityOpt={{.HostConfig.SecurityOpt }}'"
+  debug: msg="***Needs running set of containers"
   tags:
    - scored
    - section5.2
 
 - name: 5.22 Do not docker exec commands with privileged option (Scored)
-  debug: msg="ausearch -k docker | grep exec | grep privileged"
+  debug: msg="***Needs running set of containers"
   tags:
    - scored
    - section5.22
 
 - name: 5.23 Do not docker exec commands with user option (Scored)
-  debug: msg="ausearch -k docker | grep exec | grep user"
+  debug: msg="***Needs running set of containers"
   tags:
    - scored
    - section5.23
