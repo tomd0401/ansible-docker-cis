@@ -12,7 +12,11 @@
    - section2.9
 
 - name: 2.10 Do not change base device size until needed (Scored)
-  shell: ps -ef | grep docker | grep dm.basesize
+  shell: ps -ef | grep docker | grep [d]m.basesize
+  register: res
+  failed_when: res.rc == 0
+  changed_when: res.rc == 0
+  always_run: yes
   tags:
    - scored
    - section2.10
@@ -24,7 +28,7 @@
    - section2.11
 
 - name: 2.12 Configure centralized and remote logging (Scored)
-  command: "ps -ef | grep docker | grep log-driver"
+  command: "ps -ef | grep docker | grep [l]og-driver"
   register: res
   failed_when: res.rc == 0
   changed_when: res.rc == 0
@@ -34,7 +38,11 @@
    - section2.12
 
 - name: 2.13 Disable operations on legacy registry (v1) (Scored)
-  debug: msg="ps -ef | grep docker | grep -q disable-legacy-registry"
+  shell: ps -ef | grep docker | grep [d]isable-legacy-registry
+  register: res
+  failed_when: res.rc == 1
+  changed_when: res.rc == 1
+  always_run: yes
   tags:
    - scored
    - section2.13
