@@ -95,6 +95,12 @@
    - scored
    - section3.16
 
+- name: 3.17 Create daemon.json if it does not exist
+  command: "touch /etc/docker/daemon.json"
+  tags:
+   - scored
+   - section3.17
+
 - name: 3.17 Verify that daemon.json file ownership is set to root:root (Scored)
   debug: msg="chown root:root /etc/docker/daemon.json"
   tags:
