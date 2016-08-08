@@ -39,7 +39,7 @@
    - section1.4
 
 - name: 1.5 Keep Docker up to date (Not Scored)
-  yum: name=docker state=latest
+  yum: name=docker-engine state=latest
   tags:
    - notscored
    - section1.5
