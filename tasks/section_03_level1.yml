@@ -21,7 +21,7 @@
    - section3.6
 
 - name: 3.7-3.12 Verify that all registry certificate file ownership is set to root:root (Scored) and file permissions are set to 444 or more restrictive (Scored)
-  file: path=/opt/travelex/docker-registry/certs state=directory owner=root group=root mode=0444 recurse=yes
+  file: path=/opt/travelex/docker-registry/certs/*/docker-bundle.crt state=touch owner=root group=root mode=0444
   tags:
    - scored
    - section3.7
