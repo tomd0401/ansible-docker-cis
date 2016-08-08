@@ -14,6 +14,16 @@
    - section2.5
    - section2.6
 
+- meta: flush_handlers
+  tags:
+   - scored
+   - section2.1
+   - section2.2
+   - section2.3
+   - section2.4
+   - section2.5
+   - section2.6
+
 - name: 2.1 Restrict network traffic between containers (Scored)
   shell: ps -ef | grep '[i]cc=false'
   register: res

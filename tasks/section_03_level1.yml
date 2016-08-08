@@ -48,7 +48,7 @@
    - section3.16
 
 - name: 3.17-3.18 Verify that daemon.json file ownership is set to root:root (Scored) file permissions are set to 644 or more restrictive (Scored)
-  file: path=/etc/docker/daemon.json state=touch owner=root group=root mode=0644
+  file: path=/etc/docker/daemon.json state=absent
   tags:
    - scored
    - section3.17
