@@ -45,8 +45,12 @@
    - scored
    - section2.5
 
-- name: 2.6 Configure TLS authentication for Docker daemon (Scored)
-  debug: msg="Manual action needed"
+- name: 2.6 Configure TLS authentication for Docker daemon (Scored) (in our case check if the socket is not used)
+  shell: ps -ef | grep [d]ocker | grep \\-H
+  register: res
+  failed_when: res.rc == 0
+  changed_when: res.rc == 0
+  always_run: yes
   tags:
    - scored
    - section2.6

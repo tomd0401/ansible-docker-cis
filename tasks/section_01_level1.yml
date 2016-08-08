@@ -39,7 +39,7 @@
    - section1.4
 
 - name: 1.5 Keep Docker up to date (Not Scored)
-  debug: msg="*** Not in a scope of this playbook"
+  yum: name=docker state=latest
   tags:
    - notscored
    - section1.5
@@ -50,20 +50,61 @@
    - scored
    - section1.6
 
-- name: 1.7 - 1.15 Configure auditd Rules (Scored)
-  copy: >
-      src=audit.rules
-      dest=/etc/audit/audit.rules
-  notify: Reload auditd Rules
+- name: 1.7 Audit docker daemon (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /usr/bin/docker -k docker"
   tags:
    - scored
    - section1.7
+
+- name: 1.8 Audit Docker files and directories - /var/lib/docker (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /var/lib/docker -k docker"
+  tags:
+   - scored
    - section1.8
+
+- name: 1.9 Audit Docker files and directories - /etc/docker (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /etc/docker -k docker"
+  tags:
+   - scored
    - section1.9
+
+- name: 1.10 Audit Docker files and directories - docker.service (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /usr/lib/systemd/system/docker.service -k docker"
+  tags:
+   - scored
    - section1.10
+
+- name: 1.11 Audit Docker files and directories - docker.socket (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /usr/lib/systemd/system/docker.socket -k docker"
+  tags:
+   - scored
    - section1.11
+
+- name: 1.12 Audit Docker files and directories - /etc/default/docker (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /etc/default/docker -k docker"
+  tags:
+   - scored
    - section1.12
+
+- name: 1.13 Audit Docker files and directories - /etc/docker/daemon.json (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /etc/docker/daemon.json -k docker"
+  tags:
+   - scored
    - section1.13
+
+- name: 1.14 Audit Docker files and directories - /usr/bin/docker-containerd (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /usr/bin/docker-containerd -k docker"
+  tags:
+   - scored
    - section1.14
+
+- name: 1.15 Audit Docker files and directories - /usr/bin/docker-runc (Scored)
+  lineinfile: dest=/etc/audit/audit.rules line="-w /usr/bin/docker-runc -k docker"
+  tags:
+   - scored
    - section1.15
 
+- name: Reload audit service
+  service: name=auditd state=restarted
+  tags:
+   - scored
