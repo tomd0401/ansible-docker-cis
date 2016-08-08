@@ -1,4 +1,19 @@
 ---
+- name: 2.1-2.7 setting appropriate flags in docker configuration
+  lineinfile: >
+    dest=/etc/selinux/config
+    regexp=^OPTIONS= 
+    line="'--selinux-enabled --disable-legacy-registry --icc=false --log-driver=journald --group=docker --log-level=info --iptables=true'"
+  notify: Reload docker
+  tags:
+   - scored
+   - section2.1
+   - section2.2
+   - section2.3
+   - section2.4
+   - section2.5
+   - section2.6
+
 - name: 2.1 Restrict network traffic between containers (Scored)
   shell: ps -ef | grep '[i]cc=false'
   register: res
