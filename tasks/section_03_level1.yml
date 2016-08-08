@@ -38,6 +38,7 @@
    - scored
    - section3.13
    - section3.14
+   - with_registry
 
 - name: 3.15-3.16 Verify that Docker socket file ownership is set to root:docker (Scored) and file permissions are set to 660 or more restrictive (Scored)
   file: path=/var/run/docker.sock state=touch owner=root group=docker mode=0660

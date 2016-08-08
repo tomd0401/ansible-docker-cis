@@ -31,7 +31,7 @@
    - section2.11
 
 - name: 2.12 Configure centralized and remote logging (Scored)
-  command: "ps -ef | grep docker | grep [l]og-driver"
+  shell: "ps -ef | grep docker | grep [l]og-driver"
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
