@@ -21,7 +21,12 @@
    - section3.6
 
 - name: 3.7-3.12 Verify that all registry certificate file ownership is set to root:root (Scored) and file permissions are set to 444 or more restrictive (Scored)
-  file: path=/opt/travelex/docker-registry/certs state=directory owner=root group=root mode=0444 recurse=yes
+  file: >
+    path=/opt/travelex/docker-registry/certs/{{ item }}/docker-bundle.crt
+    state=touch owner=root group=root mode=0444
+  with_items:
+   - internal
+   - external
   tags:
    - scored
    - section3.7
@@ -33,21 +38,17 @@
    - with_registry
 
 - name: 3.13-3.14 Verify that Docker server internal certificate key file ownership is set to root:root (Scored) and file permissions are set to 400 (Scored)
-  file: path=/opt/travelex/docker-registry/certs/internal/docker.key state=touch owner=root group=root mode=0400
+  file: >
+    path=/opt/travelex/docker-registry/certs/{{ item }}/docker.key
+    state=touch owner=root group=root mode=0400
+  with_items:
+   - internal
+   - external
   tags:
    - scored
    - section3.13
    - section3.14
    - with_registry
-
-- name: 3.13-3.14 Verify that Docker server external certificate key file ownership is set to root:root (Scored) and file permissions are set to 400 (Scored)
-  file: path=/opt/travelex/docker-registry/certs/external/docker.key state=touch owner=root group=root mode=0400
-  tags:
-   - scored
-   - section3.13
-   - section3.14
-   - with_registry
-
 
 - name: 3.15-3.16 Verify that Docker socket file ownership is set to root:docker (Scored) and file permissions are set to 660 or more restrictive (Scored)
   file: path=/var/run/docker.sock state=touch owner=root group=docker mode=0660
