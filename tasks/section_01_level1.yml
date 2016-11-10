@@ -52,59 +52,63 @@
 
 - name: 1.7 Audit docker daemon (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /usr/bin/docker -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.7
 
 - name: 1.8 Audit Docker files and directories - /var/lib/docker (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /var/lib/docker -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.8
 
 - name: 1.9 Audit Docker files and directories - /etc/docker (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /etc/docker -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.9
 
 - name: 1.10 Audit Docker files and directories - docker.service (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /usr/lib/systemd/system/docker.service -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.10
 
 - name: 1.11 Audit Docker files and directories - docker.socket (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /usr/lib/systemd/system/docker.socket -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.11
 
 - name: 1.12 Audit Docker files and directories - /etc/default/docker (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /etc/default/docker -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.12
 
 - name: 1.13 Audit Docker files and directories - /etc/docker/daemon.json (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /etc/docker/daemon.json -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.13
 
 - name: 1.14 Audit Docker files and directories - /usr/bin/docker-containerd (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /usr/bin/docker-containerd -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.14
 
 - name: 1.15 Audit Docker files and directories - /usr/bin/docker-runc (Scored)
   lineinfile: dest=/etc/audit/audit.rules line="-w /usr/bin/docker-runc -k docker"
+  notify: Reload auditd Rules
   tags:
    - scored
    - section1.15
-
-- name: Reload audit service
-  service: name=auditd state=restarted
-  tags:
-   - scored
