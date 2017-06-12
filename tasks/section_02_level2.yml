@@ -6,7 +6,7 @@
    - section2.8
 
 - name: 2.9 Confirm default cgroup usage (Scored)
-  shell: ps -ef | grep docker | grep [c]group-parent
+  shell: pgrep -a docker | grep [c]group-parent
   register: res
   failed_when: res.rc == 0
   changed_when: res.rc == 0
@@ -15,7 +15,7 @@
    - section2.9
 
 - name: 2.10 Do not change base device size until needed (Scored)
-  shell: ps -ef | grep docker | grep [d]m.basesize
+  shell: pgrep -a docker | grep [d]m.basesize
   register: res
   failed_when: res.rc == 0
   changed_when: res.rc == 0
@@ -31,7 +31,7 @@
    - section2.11
 
 - name: 2.12 Configure centralized and remote logging (Scored)
-  shell: "ps -ef | grep docker | grep [l]og-driver"
+  shell: "pgrep -a docker | grep [l]og-driver"
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
@@ -41,7 +41,7 @@
    - section2.12
 
 - name: 2.13 Disable operations on legacy registry (v1) (Scored)
-  shell: ps -ef | grep docker | grep [d]isable-legacy-registry
+  shell: pgrep -a docker | grep [d]isable-legacy-registry
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
