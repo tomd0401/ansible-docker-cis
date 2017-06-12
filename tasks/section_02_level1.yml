@@ -25,7 +25,7 @@
    - section2.6
 
 - name: 2.1 Restrict network traffic between containers (Scored)
-  shell: ps -ef | grep '[i]cc=false'
+  shell: pgrep -a docker | grep '[i]cc=false'
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
@@ -35,7 +35,7 @@
    - section2.1
 
 - name: 2.2 Set the logging level (Scored)
-  shell: ps -ef | grep '[l]og-level=info'
+  shell: pgrep -a docker | grep '[l]og-level=info'
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
@@ -45,7 +45,7 @@
    - section2.2
 
 - name: 2.3 Allow Docker to make changes to iptables (Scored)
-  shell: ps -ef | grep '[i]ptables=true'
+  shell: pgrep -a docker | grep '[i]ptables=true'
   register: res
   failed_when: res.rc == 1
   changed_when: res.rc == 1
@@ -55,7 +55,7 @@
    - section2.3
 
 - name: 2.4 Do not use insecure registries (Scored)
-  shell: ps -ef | grep '[i]nsecure-registry'
+  shell: pgrep -a docker | grep '[i]nsecure-registry'
   register: res
   failed_when: res.rc == 0
   changed_when: res.rc == 0
@@ -71,7 +71,7 @@
    - section2.5
 
 - name: 2.6 Configure TLS authentication for Docker daemon (Scored) (in our case check if the socket is not used)
-  shell: ps -ef | grep [d]ocker | grep \\-H
+  shell: pgrep -a docker | grep \\-H
   register: res
   failed_when: res.rc == 0
   changed_when: res.rc == 0
